@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세상은 망해도 백야는 영업 중 | 고객 안내문</title>
+<meta name="description" content="멸망 40주년 기념, 전 좌석 정상 영업합니다. 산꼭대기 카지노 백야의 고객 안내문.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carpet:#3a0c15; --carpet-deep:#27070d; --gold:#d9a441; --lamp:#e5391f;
+  --paper:#f2ecd9; --ink:#2a1a14; --faded:#6d5a4c;
+  --house:#b8862b; --union:#b85c1a; --pawn:#2f7d6b; --army:#5f6f3f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--carpet);color:var(--ink);font-family:"Gowun Batang",serif;font-size:17px;line-height:1.8;
+  background-image:radial-gradient(circle at 20px 20px,var(--carpet-deep) 3px,transparent 4px),radial-gradient(circle at 0 0,var(--carpet-deep) 3px,transparent 4px);background-size:40px 40px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:3px}
+
+.board{background:#120805;border-bottom:4px solid var(--gold);overflow:hidden;white-space:nowrap}
+.board p{display:inline-block;margin:0;padding:.7rem 0 .7rem 100%;font-family:"Black Han Sans",sans-serif;font-size:1.25rem;letter-spacing:.12em;color:var(--lamp);text-shadow:0 0 6px rgba(229,57,31,.7);animation:run 38s linear infinite}
+@keyframes run{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.board p{animation:none;padding-left:1rem;white-space:normal}}
+
+header{text-align:center;padding:3.5rem 1rem 3rem}
+h1{margin:0;font-family:"Black Han Sans",sans-serif;font-weight:400;line-height:1.05;color:var(--lamp);
+  -webkit-text-stroke:2px var(--gold);paint-order:stroke fill;text-shadow:0 4px 0 #120805}
+h1 span{display:block}
+h1 .top{font-size:clamp(2.2rem,8vw,4.5rem)}
+h1 .bottom{font-size:clamp(3rem,12vw,7rem)}
+header .greet{margin:1.4rem auto 0;max-width:30em;color:var(--paper);font-size:1.1rem}
+
+main{max-width:46rem;margin:0 auto 4rem;padding:0 1rem}
+.sheet{background:var(--paper);padding:2.2rem clamp(1.2rem,5vw,3rem);margin-bottom:1.6rem;box-shadow:6px 6px 0 var(--carpet-deep);position:relative}
+.sheet::before{content:"";position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--gold);box-shadow:inset -2px -2px 0 rgba(0,0,0,.25)}
+h2{font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:1.9rem;line-height:1.2;margin:0 0 1rem;border-bottom:3px double var(--ink);padding-bottom:.5rem}
+h3{font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:1.25rem;margin:0}
+p{margin:0 0 1rem}
+.note{color:var(--faded);font-size:.95rem}
+
+.factions{display:grid;gap:1.2rem;margin-top:1.4rem}
+.faction{border-left:10px solid var(--c);padding:.2rem 0 .2rem 1rem}
+.faction p{margin:.2rem 0 .6rem}
+.faction ul{list-style:none;margin:0;padding:0}
+.faction li{padding:.45rem 0;border-top:1px dashed var(--faded)}
+.faction li b{font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:1.1rem;margin-right:.5rem}
+.faction li i{font-style:normal;color:var(--faded);font-size:.92rem}
+
+.form{border:2px solid var(--ink);padding:1.2rem 1.3rem;margin:1.2rem 0;background:#fbf7ea}
+.form h3{text-align:center;margin-bottom:.8rem}
+.form dl{margin:0;display:grid;grid-template-columns:7.5em 1fr;row-gap:.3rem}
+.form dt{font-weight:700}
+.form dd{margin:0;border-bottom:1px solid var(--ink);color:var(--faded)}
+ol{padding-left:1.3rem;margin:0 0 1rem}
+ol li{margin-bottom:.4rem}
+.tips{padding-left:1.2rem;margin:0}
+
+.stamp{display:inline-block;margin-top:.6rem;padding:.7rem 1.6rem;font-family:"Black Han Sans",sans-serif;font-size:1.3rem;color:var(--paper);background:var(--lamp);border:3px solid var(--gold);text-decoration:none}
+.stamp[aria-disabled=true]{background:var(--faded);border-color:var(--faded)}
+footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem;opacity:.85}
+</style>
+</head>
+<body>
+
+<div class="board" role="marquee" aria-label="백야 전광판">
+  <p>오늘도 정상 영업합니다 &nbsp;&nbsp;&nbsp;&nbsp; 멸망 40주년 기념, 전 좌석 정상 영업합니다 &nbsp;&nbsp;&nbsp;&nbsp; 과도한 낙담은 다른 손님께 불편을 드립니다 &nbsp;&nbsp;&nbsp;&nbsp; 대기 중 사망하신 고객님의 번호는 다음 분께 승계됩니다 &nbsp;&nbsp;&nbsp;&nbsp; 등록된 손님은 가족입니다</p>
+</div>
+
+<header>
+  <h1><span class="top">세상은 망해도</span><span class="bottom">백야는 영업 중</span></h1>
+  <p class="greet">어서 오세요, 백야입니다. 산을 올라오시느라 고생 많으셨습니다. 등록 전에 아래 안내문을 읽어 주십시오.</p>
+</header>
+
+<main>
+
+<section class="sheet">
+  <h2>이곳은 어디인가요</h2>
+  <p>세상이 망한 지 40년이 지났습니다. 대도시는 재가 되었고, 태백산맥 안쪽 골짜기만 남았습니다. 사람들은 전쟁 전의 물건을 고쳐 쓰며 삽니다. 브라운관, 네온 간판, 카세트테이프, 닳은 트로트.</p>
+  <p>강원도 정선, 해발 천 미터 능선의 카지노 <b>백야</b>는 밤에 불이 켜지는 유일한 곳입니다. 수십 킬로미터 밖에서도 보입니다. 살아남은 사람들은 그 불을 보고 산을 오릅니다.</p>
+  <p>이 산에서는 칩이 돈이고 전기가 권력입니다. 요즘 사택촌의 전기 배급 시간이 조금씩 줄고 있지만, 고객님께서 걱정하실 일은 아닙니다.</p>
+</section>
+
+<section class="sheet">
+  <h2>산에는 네 집안이 있습니다</h2>
+  <p>한 집안을 도우면 다른 집안이 압니다. 소문은 하루면 산을 돕니다.</p>
+  <div class="factions">
+
+    <div class="faction" style="--c:var(--house)">
+      <h3>하우스</h3>
+      <p>백야의 경영진. 칩과 전기를 쥐고 있습니다. "하우스는 지지 않습니다."</p>
+      <ul>
+        <li><b>마 회장</b><i>백야의 주인. 13층 위에서 내려오지 않습니다.</i></li>
+        <li><b>서도윤</b><i>플로어 매니저. 정중하게 웃으며 숫자로 말합니다.</i></li>
+        <li><b>한채린</b><i>에이스 딜러. 농담인지 아닌지 알 수 없습니다.</i></li>
+      </ul>
+    </div>
+
+    <div class="faction" style="--c:var(--union)">
+      <h3>갱도 조합</h3>
+      <p>전쟁 때 굴로 들어간 광부들의 후손. 지상 사람을 '윗것들'이라 부릅니다.</p>
+      <ul>
+        <li><b>배순덕</b><i>조합장. 굴이 무너질 땐 미리 운다고 합니다.</i></li>
+        <li><b>강무진</b><i>발파공. 돌려 말하지 않습니다.</i></li>
+        <li><b>탁이랑</b><i>갱도 의사. 참는 건 치료가 아니라고 합니다.</i></li>
+      </ul>
+    </div>
+
+    <div class="faction" style="--c:var(--pawn)">
+      <h3>전당포 연합</h3>
+      <p>읍내 전당포 서른여 곳. 물건도, 노동도, 사람도 담보로 받습니다. 가족 같은 이자.</p>
+      <ul>
+        <li><b>왕 사장</b><i>연합의 수장. 다정하게 조입니다.</i></li>
+        <li><b>진서하</b><i>감정사. 무엇이든 값으로 환산합니다.</i></li>
+        <li><b>백건우</b><i>회수꾼. 사과가 입버릇입니다.</i></li>
+      </ul>
+    </div>
+
+    <div class="faction" style="--c:var(--army)">
+      <h3>동해안 연대</h3>
+      <p>해안에서 버틴 군인들. 규율과 총은 있고, 밥과 전기가 없습니다.</p>
+      <ul>
+        <li><b>곽정호</b><i>연대장. 반문을 싫어합니다.</i></li>
+        <li><b>차은석</b><i>연락장교. 보고서는 본인이 씁니다.</i></li>
+        <li><b>민가온</b><i>저격수. 밥은 먹었냐고 묻습니다.</i></li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="note" style="margin-top:1.2rem">각자 숨기는 것이 하나씩 있습니다. 안내문에는 적지 않습니다.</p>
+</section>
+
+<section class="sheet">
+  <h2>등록하는 법</h2>
+  <ol>
+    <li>신분 등록소 3번 창구에서 신청서를 받습니다.</li>
+    <li>신규인지 갱신인지 고릅니다. 신규는 산 밖에서 막 올라온 외지인, 갱신은 이 산에서 살아온 사람입니다.</li>
+    <li>빈칸을 채워 냅니다. 적은 내용이 곧 고객님입니다.</li>
+  </ol>
+  <div class="form">
+    <h3>백야 신분 등록 신청서</h3>
+    <dl>
+      <dt>구분</dt><dd>신규 / 갱신</dd>
+      <dt>성명·나이</dt><dd>성인만 등록 가능 (규정 제1조)</dd>
+      <dt>출신지</dt><dd>예: 동해안</dd>
+      <dt>특기</dt><dd>예: 자물쇠 따기. 해당 없음 가능</dd>
+      <dt>현재 채무</dt><dd>없으면 '아직 없음'</dd>
+      <dt>방문 목적</dt><dd>예: 사람을 찾으러</dd>
+    </dl>
+  </div>
+  <p class="note">빈칸은 솔직하게 쓰세요. 거짓말은 2층 보안실에서 따로 접수합니다.</p>
+</section>
+
+<section class="sheet">
+  <h2>이용 안내</h2>
+  <ul class="tips">
+    <li>채팅방 메뉴에서 '유저 사칭 방지'를 켜 주세요.</li>
+    <li>특기와 방문 목적은 구체적일수록 이야기가 잘 굴러갑니다.</li>
+    <li>칩, 빚, 체력, 네 집안의 평판이 고객님의 선택에 따라 움직입니다.</li>
+    <li>응답 끝의 기록 칸이 잘리면 최대 출력량을 올려 주세요.</li>
+    <li>로맨스는 원하실 때만 진전됩니다. 이 산 사람들은 쉽게 넘어오지 않습니다.</li>
+    <li>등장인물은 전원 성인이며, 성인 이용자를 위한 이야기입니다.</li>
+  </ul>
+</section>
+
+<section class="sheet" style="text-align:center">
+  <h2>입장</h2>
+  <p>크랙에서 플레이할 수 있습니다. 지금은 개장 준비 중입니다.</p>
+  <a class="stamp" aria-disabled="true">개장 준비 중</a>
+</section>
+
+</main>
+
+<footer>
+  <p>본 안내문은 가상의 이야기를 소개합니다. 실제 업체, 인물, 단체와 관계가 없습니다.</p>
+</footer>
+
+</body>
+</html>
