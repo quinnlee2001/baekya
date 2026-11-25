@@ -148,12 +148,7 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
       <li>본인은 하우스가 지지 않는다는 것을 압니다.</li>
       <li>본인이 대기 중 사망하면 번호는 다음 분께 승계됩니다.</li>
     </ol>
-    <label for="sign">서명</label>
-    <input id="sign" type="text" maxlength="12" autocomplete="off" placeholder="이름 또는 별명">
-    <p class="gate-msg" id="gateMsg" role="alert"></p>
-    <button class="gate-go" type="submit">서명하고 등록</button>
-    <button class="gate-skip" type="button" id="skip">서명 없이 둘러보기</button>
-    <p class="gate-note">서명은 이 화면에서만 쓰이고 어디로도 보내지 않습니다.</p>
+    <button class="gate-go" type="submit" id="signBtn">서명하기</button>
   </form>
 </div>
 
@@ -367,21 +362,18 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
 
 <script>
 (function(){
-  var gate=document.getElementById('gate'),form=document.getElementById('gateForm'),sign=document.getElementById('sign'),msg=document.getElementById('gateMsg'),greet=document.getElementById('greet');
+  var gate=document.getElementById('gate'),form=document.getElementById('gateForm'),btn=document.getElementById('signBtn');
   var behind=document.querySelectorAll('.board,header,nav,main,footer');
   function lock(on){for(var i=0;i<behind.length;i++){behind[i].inert=on;}document.body.classList.toggle('gated',on);gate.hidden=!on;}
-  function welcome(n){if(n&&greet){greet.textContent=n+' 고객님, 등록되셨습니다. 등록된 손님은 가족입니다. 가족 할인은 없습니다. 아래 안내문을 읽어 주십시오.';}}
   var saved=null;try{saved=sessionStorage.getItem('baekya-sign');}catch(e){}
-  if(saved!==null){welcome(saved);}else{lock(true);sign.focus();}
+  if(saved===null){lock(true);btn.focus();}
   form.addEventListener('submit',function(e){
-    e.preventDefault();var n=sign.value.trim();
-    if(!n){msg.textContent='서명란이 비어 있습니다. 빈칸은 2층 보안실에서 따로 접수합니다.';sign.focus();return;}
-    try{sessionStorage.setItem('baekya-sign',n);}catch(e){}
-    welcome(n);gate.classList.add('stamped');
+    e.preventDefault();
+    try{sessionStorage.setItem('baekya-sign','1');}catch(e){}
+    gate.classList.add('stamped');btn.disabled=true;
     var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     setTimeout(function(){lock(false);},still?0:900);
   });
-  document.getElementById('skip').addEventListener('click',function(){try{sessionStorage.setItem('baekya-sign','');}catch(e){}lock(false);});
 
   var dl=document.querySelector('.places'),lv=document.querySelectorAll('.lv');
   if(dl&&lv.length){
