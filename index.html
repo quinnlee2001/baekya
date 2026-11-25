@@ -76,6 +76,37 @@ p{margin:0 0 1rem}
 .legend b{font-family:"Black Han Sans",sans-serif;font-weight:400;margin-right:.4rem}
 @media (max-width:540px){.extras{grid-template-columns:1fr}}
 
+.say{display:block;font-style:normal;font-weight:700;font-size:.9rem;line-height:1.55;margin-top:.5rem;padding-left:.5rem;border-left:3px solid var(--c)}
+
+.gate{position:fixed;inset:0;z-index:20;background:var(--carpet-deep);display:flex;align-items:center;justify-content:center;padding:1rem;overflow:auto}
+.gate[hidden]{display:none}
+body.gated{overflow:hidden}
+.gate-sheet{background:var(--paper);width:100%;max-width:30rem;margin:auto;padding:2rem clamp(1.2rem,5vw,2.4rem);box-shadow:6px 6px 0 #120805;position:relative}
+.gate-sheet h2{text-align:center}
+.gate-no{margin:0 0 .6rem;text-align:center;color:var(--faded);font-size:.9rem}
+.terms{font-size:.95rem}
+.gate-sheet label{display:block;font-weight:700;margin-top:1rem}
+.gate-sheet input{width:100%;font:inherit;font-size:1.2rem;padding:.4rem .2rem;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink)}
+.gate-msg{min-height:1.6em;margin:.3rem 0 0;color:var(--lamp);font-size:.9rem;font-weight:700}
+.gate-go{display:block;width:100%;margin-top:.6rem;padding:.7rem;font-family:"Black Han Sans",sans-serif;font-size:1.3rem;color:var(--paper);background:var(--lamp);border:3px solid var(--gold);cursor:pointer}
+.gate-skip{display:block;margin:.8rem auto 0;padding:.3rem;font:inherit;font-size:.92rem;color:var(--faded);background:none;border:0;text-decoration:underline;cursor:pointer}
+.gate-note{margin:.8rem 0 0;text-align:center;color:var(--faded);font-size:.85rem}
+.done{position:absolute;right:1rem;top:1rem;padding:.1rem .8rem;border:4px solid var(--lamp);color:var(--lamp);font-family:"Black Han Sans",sans-serif;font-size:1.7rem;opacity:0;transform:rotate(-12deg) scale(2.2);transition:opacity .2s,transform .2s}
+.gate.stamped .done{opacity:1;transform:rotate(-12deg) scale(1)}
+@media (prefers-reduced-motion:reduce){.done{transition:none}}
+
+.mount{display:flex;flex-direction:column;align-items:center;gap:3px;margin:1.2rem 0 1.4rem}
+.cap{width:max(24%,9rem);text-align:center;font-size:.85rem;line-height:1.4;color:var(--faded);border:1px dashed var(--faded);border-bottom:0;padding:.3rem}
+.cap small{display:block}
+.lv{width:max(var(--w),12rem);max-width:100%;font-family:"Black Han Sans",sans-serif;font-size:1.05rem;line-height:1.3;color:var(--paper);background:var(--c);border:3px solid transparent;padding:.45rem .6rem;cursor:pointer}
+.lv small{display:block;font-family:"Gowun Batang",serif;font-size:.78rem;font-weight:700;opacity:.9}
+.lv[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 3px var(--lamp)}
+.lv.under{margin-top:8px;outline:0;border-top:6px double var(--gold)}
+.places.js dt,.places.js dd{display:none}
+.places.js dt.on,.places.js dd.on{display:block}
+.places.js dt.on{margin-top:0;padding-top:0;border-top:0}
+.places.js{border:2px solid var(--ink);background:#fbf7ea;padding:1rem 1.2rem;min-height:8.5rem}
+
 .roles{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin:1.2rem 0}
 .role{border:1px dashed var(--ink);padding:.9rem 1rem;background:#fbf7ea}
 .role p{margin:.4rem 0 0;font-size:.95rem;line-height:1.7}
@@ -106,13 +137,33 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
 </head>
 <body>
 
+<div class="gate" id="gate" hidden>
+  <form class="gate-sheet" id="gateForm" novalidate>
+    <span class="done" aria-hidden="true">등록 완료</span>
+    <p class="gate-no">신분 등록소 3번 창구</p>
+    <h2>백야 신분 등록 신청서</h2>
+    <p>어서 오세요, 백야입니다. 안내문은 등록하신 분께만 보여 드립니다. 아래 내용을 확인하고 서명해 주십시오.</p>
+    <ol class="terms">
+      <li>본인은 이 안내문이 가상의 이야기를 소개한다는 것을 압니다.</li>
+      <li>본인은 하우스가 지지 않는다는 것을 압니다.</li>
+      <li>본인이 대기 중 사망하면 번호는 다음 분께 승계됩니다.</li>
+    </ol>
+    <label for="sign">서명</label>
+    <input id="sign" type="text" maxlength="12" autocomplete="off" placeholder="이름 또는 별명">
+    <p class="gate-msg" id="gateMsg" role="alert"></p>
+    <button class="gate-go" type="submit">서명하고 등록</button>
+    <button class="gate-skip" type="button" id="skip">서명 없이 둘러보기</button>
+    <p class="gate-note">서명은 이 화면에서만 쓰이고 어디로도 보내지 않습니다.</p>
+  </form>
+</div>
+
 <div class="board" role="marquee" aria-label="백야 전광판">
   <p>오늘도 정상 영업합니다 &nbsp;&nbsp;&nbsp;&nbsp; 멸망 40주년 기념, 전 좌석 정상 영업합니다 &nbsp;&nbsp;&nbsp;&nbsp; 과도한 낙담은 다른 손님께 불편을 드립니다 &nbsp;&nbsp;&nbsp;&nbsp; 대기 중 사망하신 고객님의 번호는 다음 분께 승계됩니다 &nbsp;&nbsp;&nbsp;&nbsp; 등록된 손님은 가족입니다</p>
 </div>
 
 <header>
   <h1><span class="top">세상은 망해도</span><span class="bottom">백야는 영업 중</span></h1>
-  <p class="greet">어서 오세요, 백야입니다. 산을 올라오시느라 고생 많으셨습니다. 등록 전에 아래 안내문을 읽어 주십시오.</p>
+  <p class="greet" id="greet">어서 오세요, 백야입니다. 산을 올라오시느라 고생 많으셨습니다. 등록 전에 아래 안내문을 읽어 주십시오.</p>
 </header>
 
 <nav aria-label="안내문 목차">
@@ -144,9 +195,9 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
     <p>백야의 경영진. 칩과 전기를 쥐고 있습니다. "하우스는 지지 않습니다."</p>
     <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>마 회장</b><small>백야의 주인, 60대</small><span>13층 위에서 내려오지 않습니다. 모든 것을 내기에 빗댑니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>서도윤</b><small>플로어 매니저, 35세</small><span>정중하게 웃으며 숫자로 말합니다. 눈은 웃지 않습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>한채린</b><small>에이스 딜러, 29세</small><span>말수가 적습니다. 농담인지 아닌지 알 수 없습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>마 회장</b><small>백야의 주인, 60대</small><span>13층 위에서 내려오지 않습니다. 모든 것을 내기에 빗댑니다.</span><em class="say">"판을 깔아 준 사람한테 패를 보자고 하면 쓰나."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>서도윤</b><small>플로어 매니저, 35세</small><span>정중하게 웃으며 숫자로 말합니다. 눈은 웃지 않습니다.</span><em class="say">"손님, 확률에는 감정이 없습니다. 저는 조금 있고요."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>한채린</b><small>에이스 딜러, 29세</small><span>말수가 적습니다. 농담인지 아닌지 알 수 없습니다.</span><em class="say">"패는 거짓말 안 해요. 사람이 하지."</em></div></li>
     </ul>
     <h4 class="tier">조연</h4>
     <ul class="extras">
@@ -160,9 +211,9 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
     <p>전쟁 때 굴로 들어간 광부들의 후손. 지상 사람을 '윗것들'이라 부릅니다.</p>
     <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>배순덕</b><small>조합장, 58세</small><span>굴은 무너질 때 미리 운다고 합니다. 느리게 말합니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>강무진</b><small>발파공, 28세</small><span>까칠합니다. 돌려 말하지 않습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>탁이랑</b><small>갱도 의사, 33세</small><span>잔소리가 많습니다. 참는 건 치료가 아니라고 합니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>배순덕</b><small>조합장, 58세</small><span>굴은 무너질 때 미리 운다고 합니다. 느리게 말합니다.</span><em class="say">"굴은 거짓말을 안 해. 무너질 땐 미리 운다니."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>강무진</b><small>발파공, 28세</small><span>까칠합니다. 돌려 말하지 않습니다.</span><em class="say">"윗것들은 불만 켜지면 다 제 건 줄 알지."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>탁이랑</b><small>갱도 의사, 33세</small><span>잔소리가 많습니다. 참는 건 치료가 아니라고 합니다.</span><em class="say">"아프면 아프다고 해. 참는 건 치료가 아니야."</em></div></li>
     </ul>
     <h4 class="tier">조연</h4>
     <ul class="extras">
@@ -176,9 +227,9 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
     <p>읍내 전당포 서른여 곳. 물건도, 노동도, 사람도 담보로 받습니다. 가족 같은 이자.</p>
     <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>왕 사장</b><small>연합의 수장, 52세</small><span>다정하게 조입니다. 손님을 식구라고 부릅니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>진서하</b><small>감정사, 31세</small><span>무엇이든 값으로 환산합니다. 입이 맵습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>백건우</b><small>회수꾼, 36세</small><span>무뚝뚝합니다. 사과가 입버릇입니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>왕 사장</b><small>연합의 수장, 52세</small><span>다정하게 조입니다. 손님을 식구라고 부릅니다.</span><em class="say">"이자는 잠을 안 자요, 손님."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>진서하</b><small>감정사, 31세</small><span>무엇이든 값으로 환산합니다. 입이 맵습니다.</span><em class="say">"그건 칩 서른 개. 당신 한숨은 값이 안 나가요."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>백건우</b><small>회수꾼, 36세</small><span>무뚝뚝합니다. 사과가 입버릇입니다.</span><em class="say">"미안합니다. 일이라서."</em></div></li>
     </ul>
     <h4 class="tier">조연</h4>
     <ul class="extras">
@@ -191,9 +242,9 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
     <p>해안에서 버틴 군인들. 규율과 총은 있고, 밥과 전기가 없습니다.</p>
     <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>곽정호</b><small>연대장, 55세</small><span>반문을 싫어합니다. 내륙으로 들어올 명분을 찾습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>차은석</b><small>연락장교, 38세</small><span>빈틈이 없습니다. 보고서는 본인이 씁니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>민가온</b><small>저격수, 30세</small><span>털털합니다. 밥은 먹었냐고 묻습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>곽정호</b><small>연대장, 55세</small><span>반문을 싫어합니다. 내륙으로 들어올 명분을 찾습니다.</span><em class="say">"굶는 병사 앞에서 원칙을 설명해 보게."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>차은석</b><small>연락장교, 38세</small><span>빈틈이 없습니다. 보고서는 본인이 씁니다.</span><em class="say">"명령은 명령입니다. 다만 보고서는 제가 씁니다."</em></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>민가온</b><small>저격수, 30세</small><span>털털합니다. 밥은 먹었냐고 묻습니다.</span><em class="say">"세 명. 왼쪽이 다리를 접니다. 그쪽은 밥은 먹었어요?"</em></div></li>
     </ul>
     <h4 class="tier">조연</h4>
     <ul class="extras">
@@ -246,14 +297,25 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
 
 <section class="sheet" id="places">
   <h2>다니실 곳</h2>
-  <dl class="places">
-    <dt>백야 플로어</dt><dd>테이블과 슬롯, 식당, 창구가 있는 영업장. 처음 발을 딛는 곳입니다.<i>자주 보이는 사람: 서도윤, 한채린</i></dd>
-    <dt>VIP층 (13층)</dt><dd>초대장이 있어야 올라갑니다. 그 위층은 안내해 드리지 않습니다.<i>자주 보이는 사람: 마 회장의 쪽지</i></dd>
-    <dt>전당포 골목 (사북 읍내)</dt><dd>전당포 서른여 곳이 늘어선 골목. 칩이 떨어진 손님이 내려오는 곳입니다.<i>자주 보이는 사람: 왕 사장, 진서하, 백건우</i></dd>
-    <dt>사택촌</dt><dd>산 아래 옛 광부 사택. 전기가 시간제로 들어옵니다.</dd>
-    <dt>갱도 입구 '650갱'</dt><dd>해발 650미터의 옛 갱구이자 갱도 조합의 정문. 본부와 식당이 안쪽에 있습니다.<i>자주 보이는 사람: 배순덕, 강무진, 탁이랑</i></dd>
-    <dt>심부 갱도</dt><dd>허락받은 사람만 내려갑니다. 안내해 드릴 내용이 없습니다.</dd>
+  <p>산을 위에서 아래로 잘라 본 그림입니다. 칸을 누르면 안내가 나옵니다.</p>
+  <div class="mount" role="group" aria-label="산의 단면">
+    <div class="cap">13층 위<small>안내해 드리지 않습니다</small></div>
+    <button type="button" class="lv" style="--w:36%;--c:var(--house)"><small>능선 위</small>VIP층 (13층)</button>
+    <button type="button" class="lv" style="--w:48%;--c:var(--house)"><small>능선 위</small>백야 플로어</button>
+    <button type="button" class="lv" style="--w:60%;--c:var(--army)"><small>고갯길</small>두문동재 검문소</button>
+    <button type="button" class="lv" style="--w:74%;--c:var(--pawn)"><small>산 아래</small>전당포 골목</button>
+    <button type="button" class="lv" style="--w:88%;--c:var(--faded)"><small>산 아래</small>사택촌</button>
+    <button type="button" class="lv" style="--w:100%;--c:var(--union)"><small>갱구</small>650갱</button>
+    <button type="button" class="lv under" style="--w:100%;--c:#120805"><small>지하</small>심부 갱도</button>
+  </div>
+  <dl class="places" aria-live="polite">
+    <dt>VIP층 (13층)</dt><dd>초대장이 있어야 올라갑니다. 판돈의 단위가 다릅니다. 그 위층은 안내해 드리지 않습니다.<i>자주 보이는 사람: 윤세라, 마 회장의 쪽지</i></dd>
+    <dt>백야 플로어</dt><dd>테이블과 슬롯, 식당, 창구가 있는 영업장. 처음 발을 딛는 곳입니다.<i>자주 보이는 사람: 서도윤, 한채린, 구태희</i></dd>
     <dt>두문동재 검문소</dt><dd>동해안 연대가 고갯길에 세운 검문소. 산을 드나들려면 지나야 합니다.<i>자주 보이는 사람: 곽정호, 차은석, 민가온</i></dd>
+    <dt>전당포 골목 (사북 읍내)</dt><dd>전당포 서른여 곳이 늘어선 골목. 칩이 떨어진 손님이 내려오는 곳입니다.<i>자주 보이는 사람: 왕 사장, 진서하, 백건우</i></dd>
+    <dt>사택촌</dt><dd>산 아래 옛 광부 사택. 전기가 시간제로 들어옵니다. 불이 꺼진 시간에 소문이 돕니다.<i>자주 보이는 사람: 봉춘삼</i></dd>
+    <dt>갱도 입구 '650갱'</dt><dd>해발 650미터의 옛 갱구이자 갱도 조합의 정문. 본부와 식당이 안쪽에 있습니다.<i>자주 보이는 사람: 배순덕, 강무진, 탁이랑, 유한결</i></dd>
+    <dt>심부 갱도</dt><dd>허락받은 사람만 내려갑니다. 안내해 드릴 내용이 없습니다.</dd>
   </dl>
 </section>
 
@@ -302,6 +364,34 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
 <footer>
   <p>본 안내문은 가상의 이야기를 소개합니다. 실제 업체, 인물, 단체와 관계가 없습니다.</p>
 </footer>
+
+<script>
+(function(){
+  var gate=document.getElementById('gate'),form=document.getElementById('gateForm'),sign=document.getElementById('sign'),msg=document.getElementById('gateMsg'),greet=document.getElementById('greet');
+  var behind=document.querySelectorAll('.board,header,nav,main,footer');
+  function lock(on){for(var i=0;i<behind.length;i++){behind[i].inert=on;}document.body.classList.toggle('gated',on);gate.hidden=!on;}
+  function welcome(n){if(n&&greet){greet.textContent=n+' 고객님, 등록되셨습니다. 등록된 손님은 가족입니다. 가족 할인은 없습니다. 아래 안내문을 읽어 주십시오.';}}
+  var saved=null;try{saved=sessionStorage.getItem('baekya-sign');}catch(e){}
+  if(saved!==null){welcome(saved);}else{lock(true);sign.focus();}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var n=sign.value.trim();
+    if(!n){msg.textContent='서명란이 비어 있습니다. 빈칸은 2층 보안실에서 따로 접수합니다.';sign.focus();return;}
+    try{sessionStorage.setItem('baekya-sign',n);}catch(e){}
+    welcome(n);gate.classList.add('stamped');
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(function(){lock(false);},still?0:900);
+  });
+  document.getElementById('skip').addEventListener('click',function(){try{sessionStorage.setItem('baekya-sign','');}catch(e){}lock(false);});
+
+  var dl=document.querySelector('.places'),lv=document.querySelectorAll('.lv');
+  if(dl&&lv.length){
+    var dts=dl.querySelectorAll('dt'),dds=dl.querySelectorAll('dd');dl.classList.add('js');
+    var pick=function(i){for(var k=0;k<lv.length;k++){var on=k===i;lv[k].setAttribute('aria-pressed',on?'true':'false');dts[k].classList.toggle('on',on);dds[k].classList.toggle('on',on);}};
+    for(var i=0;i<lv.length;i++){(function(i){lv[i].addEventListener('click',function(){pick(i);});})(i);}
+    pick(1);
+  }
+})();
+</script>
 
 </body>
 </html>
