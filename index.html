@@ -64,6 +64,18 @@ p{margin:0 0 1rem}
   .photo{border-bottom:0;border-right:1px solid var(--ink)}
 }
 
+.tier{display:inline-block;margin:.2rem 0 .6rem;padding:0 .6rem;border:2px solid var(--c);font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:.95rem;line-height:1.6}
+.people+.tier{margin-top:1.1rem}
+.extras{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
+.extras li{display:grid;grid-template-columns:56px 1fr;gap:.7rem;align-items:start;border:1px dashed var(--ink);padding:.5rem;background:#fbf7ea}
+.extras .photo{aspect-ratio:2/3;border:1px solid var(--ink);font-size:0}
+.extras b{display:block;font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:1.05rem;line-height:1.3}
+.extras small{display:block;color:var(--c);font-weight:700;font-size:.82rem}
+.extras span{display:block;font-size:.9rem;line-height:1.6;margin-top:.2rem}
+.legend{margin:1.2rem 0 0;padding:.8rem 1rem;border:1px solid var(--ink);background:#fbf7ea;font-size:.95rem}
+.legend b{font-family:"Black Han Sans",sans-serif;font-weight:400;margin-right:.4rem}
+@media (max-width:540px){.extras{grid-template-columns:1fr}}
+
 .roles{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin:1.2rem 0}
 .role{border:1px dashed var(--ink);padding:.9rem 1rem;background:#fbf7ea}
 .role p{margin:.4rem 0 0;font-size:.95rem;line-height:1.7}
@@ -125,48 +137,81 @@ footer{text-align:center;color:var(--paper);padding:0 1rem 3rem;font-size:.92rem
 <section class="sheet" id="people">
   <h2>산에는 네 집안이 있습니다</h2>
   <p>한 집안을 도우면 다른 집안이 압니다. 소문은 하루면 산을 돕니다.</p>
+  <p class="legend"><b>주연</b>이야기의 중심에 있는 열두 명입니다. 고객님과 오래 얽힙니다.<br><b>조연</b>필요한 자리에 나타나는 여덟 명입니다. 찾아가면 만날 수 있습니다.</p>
 
   <div class="faction" style="--c:var(--house)">
     <h3>하우스</h3>
     <p>백야의 경영진. 칩과 전기를 쥐고 있습니다. "하우스는 지지 않습니다."</p>
+    <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>마 회장</b><small>백야의 주인</small><span>13층 위에서 내려오지 않습니다. 모든 것을 내기에 빗댑니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>서도윤</b><small>플로어 매니저</small><span>정중하게 웃으며 숫자로 말합니다. 눈은 웃지 않습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>한채린</b><small>에이스 딜러</small><span>말수가 적습니다. 농담인지 아닌지 알 수 없습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>마 회장</b><small>백야의 주인, 60대</small><span>13층 위에서 내려오지 않습니다. 모든 것을 내기에 빗댑니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>서도윤</b><small>플로어 매니저, 35세</small><span>정중하게 웃으며 숫자로 말합니다. 눈은 웃지 않습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>한채린</b><small>에이스 딜러, 29세</small><span>말수가 적습니다. 농담인지 아닌지 알 수 없습니다.</span></div></li>
+    </ul>
+    <h4 class="tier">조연</h4>
+    <ul class="extras">
+      <li><div class="photo">사진 준비 중</div><div><b>구태희</b><small>보안실장, 44세</small><span>짧게 묻고, 대답은 수첩에 적습니다. 규칙을 믿습니다.</span></div></li>
+      <li><div class="photo">사진 준비 중</div><div><b>윤세라</b><small>VIP층 호스트, 38세</small><span>나긋하게 놀리고 칭찬합니다. 비밀을 사고팔며, 값은 다른 비밀로 받습니다.</span></div></li>
     </ul>
   </div>
 
   <div class="faction" style="--c:var(--union)">
     <h3>갱도 조합</h3>
     <p>전쟁 때 굴로 들어간 광부들의 후손. 지상 사람을 '윗것들'이라 부릅니다.</p>
+    <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>배순덕</b><small>조합장</small><span>굴은 무너질 때 미리 운다고 합니다. 느리게 말합니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>강무진</b><small>발파공</small><span>까칠합니다. 돌려 말하지 않습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>탁이랑</b><small>갱도 의사</small><span>잔소리가 많습니다. 참는 건 치료가 아니라고 합니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>배순덕</b><small>조합장, 58세</small><span>굴은 무너질 때 미리 운다고 합니다. 느리게 말합니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>강무진</b><small>발파공, 28세</small><span>까칠합니다. 돌려 말하지 않습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>탁이랑</b><small>갱도 의사, 33세</small><span>잔소리가 많습니다. 참는 건 치료가 아니라고 합니다.</span></div></li>
+    </ul>
+    <h4 class="tier">조연</h4>
+    <ul class="extras">
+      <li><div class="photo">사진 준비 중</div><div><b>송기철</b><small>굴진 반장, 47세</small><span>목소리가 쉬었고, 화가 나 있습니다. 사람들이 그 말을 듣습니다.</span></div></li>
+      <li><div class="photo">사진 준비 중</div><div><b>유한결</b><small>측량사, 24세</small><span>밝고 질문이 많습니다. 갱도 지도를 전부 외웁니다.</span></div></li>
     </ul>
   </div>
 
   <div class="faction" style="--c:var(--pawn)">
     <h3>전당포 연합</h3>
     <p>읍내 전당포 서른여 곳. 물건도, 노동도, 사람도 담보로 받습니다. 가족 같은 이자.</p>
+    <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>왕 사장</b><small>연합의 수장</small><span>다정하게 조입니다. 손님을 식구라고 부릅니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>진서하</b><small>감정사</small><span>무엇이든 값으로 환산합니다. 입이 맵습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>백건우</b><small>회수꾼</small><span>무뚝뚝합니다. 사과가 입버릇입니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>왕 사장</b><small>연합의 수장, 52세</small><span>다정하게 조입니다. 손님을 식구라고 부릅니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>진서하</b><small>감정사, 31세</small><span>무엇이든 값으로 환산합니다. 입이 맵습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>백건우</b><small>회수꾼, 36세</small><span>무뚝뚝합니다. 사과가 입버릇입니다.</span></div></li>
+    </ul>
+    <h4 class="tier">조연</h4>
+    <ul class="extras">
+      <li><div class="photo">사진 준비 중</div><div><b>오필두</b><small>읍내 세공사, 40세</small><span>말을 더듬고 자주 사과합니다. 솜씨는 천재적이고 겁은 그보다 많습니다.</span></div></li>
     </ul>
   </div>
 
   <div class="faction" style="--c:var(--army)">
     <h3>동해안 연대</h3>
     <p>해안에서 버틴 군인들. 규율과 총은 있고, 밥과 전기가 없습니다.</p>
+    <h4 class="tier">주연</h4>
     <ul class="people">
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>곽정호</b><small>연대장</small><span>반문을 싫어합니다. 내륙으로 들어올 명분을 찾습니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>차은석</b><small>연락장교</small><span>빈틈이 없습니다. 보고서는 본인이 씁니다.</span></div></li>
-      <li class="person"><div class="photo">사진 준비 중</div><div><b>민가온</b><small>저격수</small><span>털털합니다. 밥은 먹었냐고 묻습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>곽정호</b><small>연대장, 55세</small><span>반문을 싫어합니다. 내륙으로 들어올 명분을 찾습니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>차은석</b><small>연락장교, 38세</small><span>빈틈이 없습니다. 보고서는 본인이 씁니다.</span></div></li>
+      <li class="person"><div class="photo">사진 준비 중</div><div><b>민가온</b><small>저격수, 30세</small><span>털털합니다. 밥은 먹었냐고 묻습니다.</span></div></li>
+    </ul>
+    <h4 class="tier">조연</h4>
+    <ul class="extras">
+      <li><div class="photo">사진 준비 중</div><div><b>남지우</b><small>통신병, 26세</small><span>머리가 짧고 경계심이 많습니다. 요즘 부대에서 보이지 않습니다.</span></div></li>
     </ul>
   </div>
 
-  <p class="note" style="margin-top:1.4rem">각자 숨기는 것이 하나씩 있습니다. 안내문에는 적지 않습니다. 이 밖에도 창구 직원, 악사, 행상, 산적이 산에 삽니다.</p>
+  <div class="faction" style="--c:var(--faded)">
+    <h3>어느 집안도 아닌 사람들</h3>
+    <p>네 집안 사이를 오가며 먹고삽니다. 그래서 아는 것이 많습니다.</p>
+    <h4 class="tier">조연</h4>
+    <ul class="extras">
+      <li><div class="photo">사진 준비 중</div><div><b>봉춘삼</b><small>떠돌이 악사, 48세</small><span>어디서나 연주하고 어디서나 듣습니다. 소문은 술 한 잔 값입니다.</span></div></li>
+      <li><div class="photo">사진 준비 중</div><div><b>설해</b><small>길 안내인, 41세</small><span>값은 선불입니다. 검문소가 모르는 길을 압니다.</span></div></li>
+    </ul>
+  </div>
+
+  <p class="note" style="margin-top:1.4rem">각자 숨기는 것이 하나씩 있습니다. 안내문에는 적지 않습니다.</p>
 </section>
 
 <section class="sheet" id="register">
